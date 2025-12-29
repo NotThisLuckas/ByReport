@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>By Report — Plataforma de Denúncias</title>
+  <meta name="description" content="By Report é uma plataforma institucional, segura e confiável para envio e análise de denúncias com sigilo e responsabilidade." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#000000; --panel:#0a0a0a; --panel2:#0d0d0d; --text:#ffffff; --muted:#b3b3b3; --border:#191919; --red:#FF0033; --red2:#ff335c; }
+    * { box-sizing:border-box }
+    html, body { height:100% }
+    body { margin:0; font-family:Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:var(--text); background: var(--bg); }
+    a { color:inherit; text-decoration:none }
+    .header { position:sticky; top:0; z-index:60; backdrop-filter: blur(10px); background: rgba(0,0,0,0.70); border-bottom:1px solid var(--border) }
+    .inner { max-width:1180px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:16px }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:0.02em }
+    .brand .by { color:#ffffff }
+    .brand .report { color:var(--red) }
+    .nav { margin-left:auto; display:flex; gap:12px; flex-wrap:wrap }
+    .nav a { padding:10px 14px; border-radius:999px; color:#e8eef7; transition: transform .2s ease, background .2s ease }
+    .nav a:hover { transform: translateY(-2px); background: rgba(255,0,51,0.12) }
+    .cta-top { appearance:none; border:0; border-radius:999px; padding:10px 16px; font-weight:800; background: var(--red); color:#170000; box-shadow: 0 10px 24px rgba(255,0,51,0.35) }
+    .hero { position:relative; overflow:hidden }
+    .grid-overlay { position:absolute; inset:0; background:
+      radial-gradient(900px 540px at 18% -10%, rgba(255,0,51,0.10), transparent),
+      radial-gradient(700px 420px at 90% -8%, rgba(255,51,92,0.12), transparent),
+      repeating-linear-gradient(0deg, rgba(255,0,51,0.06) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(255,0,51,0.06) 0 1px, transparent 1px 40px);
+      pointer-events:none; }
+    .hero-inner { max-width:1180px; margin:0 auto; padding:80px 20px; display:grid; gap:22px; grid-template-columns: 1.1fr .9fr; align-items:center }
+    .logo-text { display:flex; align-items:center; gap:10px; font-size: clamp(28px, 4.8vw, 42px); font-weight:800; letter-spacing:0.02em }
+    .logo-o { width:54px; height:54px; filter: drop-shadow(0 0 16px rgba(255,0,51,0.6)); animation: pulse 2.4s ease-in-out infinite }
+    @keyframes pulse { 0%,100% { filter: drop-shadow(0 0 10px rgba(255,0,51,0.5)) } 50% { filter: drop-shadow(0 0 22px rgba(255,0,51,0.9)) } }
+    .hero h1 { margin:10px 0 8px; font-size: clamp(30px, 6.2vw, 56px); letter-spacing:-0.02em; line-height:1.16 }
+    .hero p { margin:0 0 22px; font-size: clamp(16px, 2.6vw, 20px); color:var(--muted); line-height:1.6 }
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+    .btn { appearance:none; border:0; border-radius:16px; padding:14px 22px; font-weight:800; letter-spacing:0.02em; cursor:pointer; transition: transform .25s ease, box-shadow .25s ease, filter .25s ease }
+    .btn-primary { color:#1a0007; background: linear-gradient(180deg, var(--red), var(--red2)); box-shadow: 0 16px 30px rgba(255,0,51,0.45) }
+    .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.06); box-shadow: 0 22px 40px rgba(255,0,51,0.55) }
+    .btn-secondary { color:#e8eef7; background: linear-gradient(180deg, var(--panel), var(--panel2)); box-shadow: 0 12px 22px rgba(0,0,0,0.35); border:1px solid var(--border) }
+    .section { max-width:1180px; margin:0 auto; padding:64px 20px }
+    .section h2 { margin:0 0 14px; font-size: clamp(24px, 4.8vw, 34px) }
+    .muted { color:var(--muted) }
+    .grid-3 { display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0, 1fr)) }
+    .grid-2 { display:grid; gap:16px; grid-template-columns: repeat(2, minmax(0, 1fr)) }
+    .card { border-radius:18px; background: linear-gradient(180deg, var(--panel), var(--panel2)); box-shadow: 0 18px 60px rgba(0,0,0,0.35); padding:20px; border:1px solid var(--border) }
+    .icon { width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background: linear-gradient(180deg, var(--red2), var(--red)); box-shadow: 0 10px 24px rgba(255,0,51,0.5) }
+    .step { text-align:center; border-radius:18px; padding:18px; background: linear-gradient(180deg, #0b0b0b, #0e0e0e); box-shadow: 0 18px 60px rgba(0,0,0,0.35); border:1px solid var(--border) }
+    .footer { border-top:1px solid var(--border); background:#0b0b0b }
+    .footer-inner { max-width:1180px; margin:0 auto; padding:34px 20px; display:grid; gap:16px; grid-template-columns: 1.2fr .8fr; align-items:center }
+    .footer-actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end }
+    .reveal { opacity:0; transform: translateY(12px); transition: opacity .45s ease, transform .45s ease }
+    .reveal.on { opacity:1; transform: translateY(0) }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns:1fr; text-align:center } .footer-inner { grid-template-columns:1fr; text-align:center; justify-items:center } }
+    @media (max-width: 700px) { .grid-3, .grid-2 { grid-template-columns:1fr } .btn { padding:12px 18px } .section { padding:48px 16px } }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="inner">
+      <div class="brand">
+        <span class="by">By</span>
+        <span class="report">Rep</span>
+        <svg class="logo-o" viewBox="0 0 64 64" aria-hidden="true"><defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0" stop-color="#ff335c"/><stop offset="1" stop-color="#FF0033"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#g)" opacity="0.22"/><circle cx="32" cy="32" r="26" fill="none" stroke="#FF0033" stroke-width="2"/><path d="M32 18 L44 24 V34 C44 42 38 47 32 50 C26 47 20 42 20 34 V24 Z" fill="#FF0033"/></svg>
+        <span class="report">rt</span>
+      </div>
+      <nav class="nav">
+        <a href="#inicio">Início</a>
+        <a href="#como">Como Funciona</a>
+        <a href="#regras">Regras</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a id="ctaTop" class="cta-top" href="#" target="_blank" rel="noopener">Entrar no Discord</a>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="grid-overlay"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <div class="logo-text"><span class="by">By</span><span class="report">Rep</span><svg class="logo-o" viewBox="0 0 64 64" aria-hidden="true"><defs><radialGradient id="g2" cx="50%" cy="50%"><stop offset="0" stop-color="#ff335c"/><stop offset="1" stop-color="#FF0033"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#g2)" opacity="0.22"/><circle cx="32" cy="32" r="26" fill="none" stroke="#FF0033" stroke-width="2"/><path d="M32 18 L44 24 V34 C44 42 38 47 32 50 C26 47 20 42 20 34 V24 Z" fill="#FF0033"/></svg><span class="report">rt</span></div>
+        <h1>Segurança, confiança e seriedade</h1>
+        <p>Apresentamos o By Report como plataforma segura e institucional para denúncias. Envie relatos com provas, conte com análise responsável e sigilo.</p>
+        <div class="hero-cta"><a id="ctaHero" class="btn btn-primary" href="#" target="_blank" rel="noopener">Entrar no Discord</a></div>
+      </div>
+      <div class="card reveal" style="justify-self:center; width:min(520px,100%); height:300px; display:grid; place-items:center; border-radius:24px; background:linear-gradient(135deg,#0a0a0a,#0f0f0f); box-shadow:0 30px 80px rgba(255,0,51,0.22); border:1px solid var(--border)">
+        <div style="display:flex; gap:12px; align-items:center">
+          <div class="icon"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M6 10V8a6 6 0 0112 0v2h1a1 1 0 011 1v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9a1 1 0 011-1h1zm2 0h8V8a4 4 0 00-8 0v2z"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7z"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Sobre o By Report</h2>
+    <div class="card"><div class="muted">Plataforma institucional, segura e confiável para envio e análise de denúncias. Foco em responsabilidade, sigilo e decisões embasadas.</div></div>
+  </section>
+
+  <section id="como" class="section reveal">
+    <h2>Como funciona</h2>
+    <div class="grid-3">
+      <div class="step"><div class="icon" style="margin:0 auto 10px"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg></div><strong>Envio de denúncias</strong><div class="muted">Relate com clareza e inclua evidências.</div></div>
+      <div class="step"><div class="icon" style="margin:0 auto 10px"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M6 10V8a6 6 0 0112 0v2h1a1 1 0 011 1v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9a1 1 0 011-1h1zm2 0h8V8a4 4 0 00-8 0v2z"/></svg></div><strong>Análise com provas</strong><div class="muted">Verificação responsável e técnica.</div></div>
+      <div class="step"><div class="icon" style="margin:0 auto 10px"><svg viewBox="0 0 24 24"><path fill="#1a0007" d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7z"/></svg></div><strong>Sigilo e responsabilidade</strong><div class="muted">Confidencialidade e comprometimento.</div></div>
+    </div>
+  </section>
+
+  <section id="regras" class="section reveal">
+    <h2>Regras e compromisso</h2>
+    <div class="grid-2">
+      <div class="card"><div>Denúncias falsas não são permitidas.</div><div class="muted">A integridade do processo depende de informações verdadeiras.</div></div>
+      <div class="card"><div>Respeito às decisões da staff.</div><div class="muted">Decisões são tomadas com base nas evidências e diretrizes.</div></div>
+    </div>
+  </section>
+
+  <section id="contato" class="section reveal" style="text-align:center">
+    <h2>Pronto para entrar?</h2>
+    <div class="muted">Clique para acessar o servidor oficial do By Report.</div>
+    <div style="margin-top:16px"><a id="ctaFinal" class="btn btn-primary" href="#" target="_blank" rel="noopener" style="font-size:18px; padding:18px 28px">Entrar no Discord</a></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><div class="brand"><span class="by">By</span><span class="report">Report</span></div><div class="muted">Sério, futurista, tecnológico e confiável.</div></div>
+      <div class="footer-actions"><a class="btn btn-primary" id="ctaFooter" href="#" target="_blank" rel="noopener">Entrar no Discord</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const DISCORD_URL='https://discord.gg/aJWUWSbz4D';
+    document.getElementById('ctaTop').href=DISCORD_URL;
+    document.getElementById('ctaHero').href=DISCORD_URL;
+    document.getElementById('ctaFinal').href=DISCORD_URL;
+    document.getElementById('ctaFooter').href=DISCORD_URL;
+    const revealEls=document.querySelectorAll('.reveal');
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{threshold:0.25});
+    revealEls.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
